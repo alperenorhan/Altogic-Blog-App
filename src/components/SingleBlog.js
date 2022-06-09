@@ -15,16 +15,16 @@ const SingleBlog = () => {
     };
     getBlog();
   }, [])
-  return <div>
-    <Link to="/">Back to Blogs</Link>
+  return <div className="text-left p-2 lg:mx-64">
+    <Link to="/" className="text-blue-600">Back to Blogs</Link>
     {
       blog ? (
-        <div>
-          <h2>{blog.title}</h2>
+        <div className="text-sm mt-5 text-center">
+          <h2 className="text-xl my-2">{blog.title}</h2>
           <div>
-            <div>{blog.content}</div>
+            <div className="text-gray-400">{blog.content}</div>
           </div>
-          <div>{blog.createdAt}</div>
+          <div className="text-xs">{blog.createdAt}</div>
         </div>
       ) : null
     }

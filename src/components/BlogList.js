@@ -32,37 +32,56 @@ const BlogList = () => {
 
 
   return (
-  <div>
-    <div>
-      <form onSubmit={createBlogPost}>
-        <label>Blog Title</label>
+  <>
+  <div className="justify-center flex mb-5">
+    <div className="border rounded p-3 w-96 my-4 bg-white">
+      <form onSubmit={createBlogPost} className="text-left">
         <div>
-          <input value={title} onChange={(e) => setTitle(e.target.value)}/>
+        <label className="text-xs">Blog Title</label>
+        <div>
+          <input 
+          value={title}
+          onChange={(e) => {
+            setTitle(e.target.value);
+          }}
+          className="border rounded mb-2 text-sm w-full p-1"
+          />
           </div>
-        <label>Blog Content</label>
+          <div>
+          <label className="text-xs">Blog Content</label>
         <div>
-          <textarea value={content} onChange={(e) => setContent(e.target.value)}/>
+          <textarea value={content} onChange={(e) => {setContent(e.target.value)}}
+          className="border rounded mb-2 text-sm w-full p-1"
+          />
         </div>
-        <button type="submit" disabled={title === ""}>Create Blog Post</button>
+        </div>
+          </div>
+       
+        
+        <button type="submit" disabled={title === ""} className="text-sm bg-blue-600 p-1 rounded text-white w-full">Create Blog Post</button>
       </form>
     </div>
+    </div>
     <h2>Blog Posts</h2>
+    <div className="grid grid-cols-3 m-3 px-12">
     {
       blogs ? blogs.map(
         (blog) => {
           return(
-            <div>
+            <div key={blog._id } className="border rounded p-3 m-1 bg-white">
               <Link to={`/blog/${blog._id}`}>
-                <div>{blog.title}</div>
-                <div>{blog.content}</div>
-                <div>{blog.createdAt}</div>
+                <div className="text-sm truncate">{blog.title}</div>
+                <div className="text-xs truncate text-gray-400">{blog.content}</div>
+                <div className="text-right text-xs my-1 text-gray-400">{blog.createdAt}</div>
               </Link>
             </div>
           ) 
         }
       ) : null
     }
-  </div>
+    </div>
+
+  </>
   );
 }
 

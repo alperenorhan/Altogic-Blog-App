@@ -6,7 +6,7 @@ import SingleBlog from "./components/SingleBlog";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-gray-100 h-screen">
       <Routes>
         <Route path="/" element={<BlogList/>}/>
         <Route path="/blog/:id" element={<SingleBlog/>}/>
